@@ -1,11 +1,20 @@
 import { html, css, LitElement } from 'lit-element';
+import { classMap } from 'lit-html/directives/class-map.js';
+import { styleMap } from 'lit-html/directives/style-map.js';
 
 export class MoveBox extends LitElement {
   static get styles() {
     return css`
-      position: absolute;
-      resize: both;
-      overflow: auto;
+      :host {
+        .movale {
+          position: absolute;
+        }
+
+        .resizable {
+          resize: both;
+          overflow: auto;
+        }
+      }
     `;
   }
 
@@ -21,6 +30,7 @@ export class MoveBox extends LitElement {
 
     this.__isMouseDown = false;
     this.__offset = [0, 0];
+    this.styles = {};
   }
 
   __onMouseDown(e) {
@@ -32,15 +42,19 @@ export class MoveBox extends LitElement {
     e.preventDefault();
 
     if (this.isMouseDown) {
-      updateStyle(this, {
-        x: event.clientX + this.__offset[0],
-        y: event.clientY + this.__offset[1],
+      this.updateStyle({
+        x: e.clientX + this.__offset[0],
+        y: e.clientY + this.__offset[1],
       });
     }
   }
 
   __onMouseUp() {
     this.__isMouseDown = false;
+  }
+
+  updateStyle(styles) {
+    this.styles = styles;
   }
 
   firstUpdated() {
@@ -59,7 +73,12 @@ export class MoveBox extends LitElement {
 
   render() {
     return html`
-      <slot />
+      <div
+        class=${classMap({ movable: this.movable, resizable: this.resizable })}
+        style=${styleMap(this.styles)}
+      >
+        <slot />
+      </div>
     `;
   }
 }
