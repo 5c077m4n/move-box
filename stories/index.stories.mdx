@@ -1,0 +1,55 @@
+import { Story, Preview, Meta, Props, html } from '@open-wc/demoing-storybook';
+
+import '../move-box.js';
+
+<Meta 
+  title="MoveBox"
+  parameters={{
+    component: "move-box",
+    options: { selectedPanel: "storybookjs/knobs/panel" }
+  }}
+/>
+
+# MoveBox
+
+A component for...
+
+## Features:
+
+- a
+- b
+- ...
+
+## How to use
+
+### Installation
+
+```bash
+yarn add move-box
+```
+
+```js
+import 'move-box/move-box.js';
+```
+
+<Preview withToolbar>
+  <Story name="Simple">
+    {html`
+      <move-box></move-box>
+    `}
+  </Story>
+</Preview>
+
+## API
+
+<Props of="move-box" />
+
+## Variations
+
+###### Custom Title
+
+<Story name="Custom Title">
+  {html`
+    <move-box .title=${'Hello World'}></move-box>
+  `}
+</Story>
