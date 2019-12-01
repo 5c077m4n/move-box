@@ -1,29 +1,38 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-GB">
-<head>
-  <meta charset="utf-8">
-  <style>
-    body {
-      background: #fafafa;
-    }
-  </style>
-</head>
-<body>
-  <div id="demo"></div>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: #fafafa;
+      }
 
-  <script type="module">
-    import { html, render } from 'lit-html';
-    import '../move-box.js';
+      #demo {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="demo"></div>
 
-    const title = 'Hello owc World!';
-    render(
-      html`
-        <move-box .title=${title}>
-          some more light-dom
-        </move-box>
-      `,
-      document.querySelector('#demo')
-    );
-  </script>
-</body>
+    <script type="module">
+      import { html, render } from 'lit-html';
+      import '../move-box.js';
+
+      render(
+        html`
+          <move-box>
+            <p>some more light-dom</p>
+          </move-box>
+        `,
+        document.getElementById('demo'),
+      );
+    </script>
+  </body>
 </html>

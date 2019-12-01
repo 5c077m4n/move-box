@@ -6,6 +6,10 @@ export class MoveBox extends LitElement {
   static get styles() {
     return css`
       :host {
+        display: block;
+        height: 150px;
+        width: 300px;
+        border: 1px solid black;
       }
 
       .movale {
@@ -31,6 +35,9 @@ export class MoveBox extends LitElement {
     this.__isMouseDown = false;
     this.__offset = [0, 0];
     this.styles = {};
+
+    this.movable = false;
+    this.resizable = false;
   }
 
   __onMouseDown(e) {
@@ -66,11 +73,9 @@ export class MoveBox extends LitElement {
   }
 
   disconnectedCallback() {
-    if (this.movable) {
-      this.removeEventListener('mousedown', this.__onMouseDown);
-      this.removeEventListener('mousemove', this.__onMouseMove);
-      this.removeEventListener('mouseup', this.__onMouseUp);
-    }
+    this.removeEventListener('mousedown', this.__onMouseDown);
+    this.removeEventListener('mousemove', this.__onMouseMove);
+    this.removeEventListener('mouseup', this.__onMouseUp);
   }
 
   render() {
