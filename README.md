@@ -4,7 +4,7 @@ This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) reco
 
 ## Installation
 ```bash
-npm i move-box
+npm install --save move-box
 ```
 
 ## Usage
