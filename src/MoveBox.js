@@ -6,14 +6,14 @@ export class MoveBox extends LitElement {
   static get styles() {
     return css`
       :host {
-        .movale {
-          position: absolute;
-        }
+      }
 
-        .resizable {
-          resize: both;
-          overflow: auto;
-        }
+      .movale {
+        position: absolute;
+      }
+      .resizable {
+        resize: both;
+        overflow: auto;
       }
     `;
   }
@@ -57,7 +57,7 @@ export class MoveBox extends LitElement {
     this.styles = styles;
   }
 
-  firstUpdated() {
+  connectedCallback() {
     if (this.movable) {
       this.addEventListener('mousedown', this.__onMouseDown, true);
       this.addEventListener('mousemove', this.__onMouseMove, true);
@@ -66,9 +66,11 @@ export class MoveBox extends LitElement {
   }
 
   disconnectedCallback() {
-    this.removeEventListener('mousedown', this.__onMouseDown);
-    this.removeEventListener('mousemove', this.__onMouseMove);
-    this.removeEventListener('mouseup', this.__onMouseUp);
+    if (this.movable) {
+      this.removeEventListener('mousedown', this.__onMouseDown);
+      this.removeEventListener('mousemove', this.__onMouseMove);
+      this.removeEventListener('mouseup', this.__onMouseUp);
+    }
   }
 
   render() {
