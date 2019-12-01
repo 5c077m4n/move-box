@@ -36,8 +36,8 @@ export class MoveBox extends LitElement {
     this.__offset = [0, 0];
     this.styles = {};
 
-    this.movable = false;
-    this.resizable = false;
+    this.movable = true;
+    this.resizable = true;
   }
 
   __onMouseDown(e) {
@@ -48,7 +48,7 @@ export class MoveBox extends LitElement {
   __onMouseMove(e) {
     e.preventDefault();
 
-    if (this.isMouseDown) {
+    if (this.__isMouseDown) {
       this.updateStyle({
         x: e.clientX + this.__offset[0],
         y: e.clientY + this.__offset[1],
@@ -65,6 +65,8 @@ export class MoveBox extends LitElement {
   }
 
   connectedCallback() {
+    super.connectedCallback();
+
     if (this.movable) {
       this.addEventListener('mousedown', this.__onMouseDown, true);
       this.addEventListener('mousemove', this.__onMouseMove, true);
@@ -73,6 +75,8 @@ export class MoveBox extends LitElement {
   }
 
   disconnectedCallback() {
+    super.disconnectedCallback();
+
     this.removeEventListener('mousedown', this.__onMouseDown);
     this.removeEventListener('mousemove', this.__onMouseMove);
     this.removeEventListener('mouseup', this.__onMouseUp);
