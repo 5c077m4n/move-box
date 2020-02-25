@@ -28,12 +28,14 @@
     }
   },
   "lint-staged": {
+    "**/*.{js,jsx,ts,tsx,json}": [
+      "prettier --write"
+    ],
+    "**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ],
     "**/package.json": [
       "sort-package-json"
-    ],
-    "*.js": [
-      "eslint --fix",
-      "prettier --write"
     ]
   },
   "prettier": "@open-wc/prettier-config",
