@@ -22,7 +22,9 @@
     "test:bs": "karma start karma.bs.config.js --coverage",
     "test:prune-snapshots": "karma start --prune-snapshots",
     "test:update-snapshots": "karma start --update-snapshots",
-    "test:watch": "karma start --auto-watch=true --single-run=false"
+    "test:watch": "karma start --auto-watch=true --single-run=false",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "husky": {
     "hooks": {
@@ -55,7 +57,8 @@
   "dependencies": {
     "lint-staged": "^8.0.0",
     "lit-element": "^2.3.1",
-    "lit-html": "^1.2.1"
+    "lit-html": "^1.2.1",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "@open-wc/building-rollup": "^0.21.0",
@@ -73,5 +76,6 @@
     "rollup": "^1.15.4",
     "sort-package-json": "^1.40.0",
     "webpack-merge": "^4.1.5"
-  }
+  },
+  "snyk": true
 }
