@@ -53,7 +53,7 @@
     ]
   },
   "dependencies": {
-    "lint-staged": "^8.0.0",
+    "lint-staged": "^9.0.0",
     "lit-element": "^2.3.1",
     "lit-html": "^1.2.1"
   },
